@@ -1,0 +1,11 @@
+{
+  "model": "gemini-2.5-flash",
+  "temperature": 0.5,
+
+  "promptFile": "../prompts/product_comparison/01_head_to_head.md",
+
+  "variables": {
+    "Product A": "iPhone 15 Pro",
+    "Product B": "Samsung Galaxy S24"
+  }
+}
