@@ -13,12 +13,16 @@ const ai = new GoogleGenAI({
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Read config
+// ----------------------------
+// Load configuration
+// ----------------------------
 const config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "test_cases.json"), "utf8")
 );
 
-// Read prompt file
+// ----------------------------
+// Load Prompt
+// ----------------------------
 let prompt = fs.readFileSync(
   path.join(__dirname, config.promptFile),
   "utf8"
@@ -29,30 +33,124 @@ for (const [key, value] of Object.entries(config.variables)) {
   prompt = prompt.replaceAll(`{${key}}`, value);
 }
 
+// ----------------------------
+// Build Evaluation Report
+// ----------------------------
+let report = `# Prompt Evaluation
+
+## Prompt File
+
+${config.promptFile}
+
+---
+
+## Test Variables
+
+`;
+
+for (const [key, value] of Object.entries(config.variables)) {
+  report += `- **${key}:** ${value}\n`;
+}
+
+report += `\n---\n`;
+
+// ----------------------------
+// Run Tests
+// ----------------------------
 async function run() {
+
   console.clear();
 
-  console.log("==============================================");
-  console.log("Prompt Evaluation");
-  console.log("==============================================");
-  console.log(`Model       : ${config.model}`);
-  console.log(`Temperature : ${config.temperature}`);
-  console.log(`Prompt File : ${config.promptFile}`);
-  console.log("==============================================\n");
+  console.log("==================================");
+  console.log("Running Prompt Evaluation");
+  console.log("==================================");
 
-  try {
-    const response = await ai.models.generateContent({
-      model: config.model,
-      contents: prompt,
-      config: {
-        temperature: config.temperature,
-      },
-    });
+  for (const temperature of config.temperatures) {
 
-    console.log(response.text);
-  } catch (err) {
-    console.error(err);
+    console.log(`\nTesting Temperature ${temperature}...`);
+
+    try {
+
+      const response = await ai.models.generateContent({
+        model: config.model,
+        contents: prompt,
+        config: {
+          temperature,
+        },
+      });
+
+      console.log("✓ Complete");
+
+      report += `
+
+# Temperature ${temperature}
+
+\`\`\`
+${response.text}
+\`\`\`
+
+---
+
+`;
+
+    } catch (err) {
+
+      console.error(err);
+
+      report += `
+
+# Temperature ${temperature}
+
+ERROR:
+
+${err}
+
+---
+
+`;
+
+    }
+
   }
+
+  report += `
+
+# Comparison
+
+> Fill this section manually.
+
+---
+
+# Hallucinations
+
+> Fill this section manually.
+
+---
+
+# Improvements
+
+> Fill this section manually.
+
+---
+
+# Final Verdict
+
+> Fill this section manually.
+
+`;
+
+  const outputPath = path.join(__dirname, config.evaluationFile);
+
+  fs.mkdirSync(path.dirname(outputPath), {
+    recursive: true,
+  });
+
+  fs.writeFileSync(outputPath, report);
+
+  console.log("\n==================================");
+  console.log("Evaluation saved successfully.");
+  console.log(outputPath);
+  console.log("==================================");
 }
 
 run();

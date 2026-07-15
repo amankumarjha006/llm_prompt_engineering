@@ -1,8 +1,11 @@
 {
   "model": "gemini-2.5-flash",
-  "temperature": 0.5,
+
+  "temperatures": [0.0, 0.5, 1.0],
 
   "promptFile": "../prompts/product_comparison/01_head_to_head.md",
+
+  "evaluationFile": "../evaluation/product_comparison/01_head_to_head.md",
 
   "variables": {
     "Product A": "iPhone 15 Pro",
