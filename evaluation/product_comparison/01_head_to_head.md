@@ -1,9 +1,13 @@
 # 📊 Prompt Evaluation
+### Product Comparison — Head-to-Head
 
 > [!NOTE]
-> **Prompt:** `product_comparison/01_head-to-head.md`  
-> **Model:** Gemini 2.5 Flash  
-> **Evaluation Date:** 15 July 2026
+>
+> **Model:** Gemini 2.5 Flash
+>
+> **Category:** Product Comparison
+>
+> **Prompt:** `01_head-to-head.md`
 
 ---
 
@@ -11,20 +15,54 @@
 
 | Parameter | Value |
 |-----------|-------|
-| **Product A** | iPhone 15 Pro |
-| **Product B** | Samsung Galaxy S24 |
-| **Temperatures Tested** | 0.0, 0.5, 1.0 |
+| Product A | iPhone 15 Pro |
+| Product B | Samsung Galaxy S24 |
+| Temperatures | 0.0, 0.5, 1.0 |
 
 ---
 
-# 🌡️ Temperature 0.0
-As a product analyst, I've conducted a head-to-head comparison between two of the most prominent flagship smartphones on the market: the **iPhone 15 Pro** and the **Samsung Galaxy S24**. This analysis aims to provide a clear, objective, and concise overview to help potential buyers make an informed decision.
+# 📝 Prompt Evolution
+
+| Version | Status | Summary |
+|----------|--------|---------|
+| **v1** | ✅ Evaluated | Initial baseline prompt. |
+| **v2** | ✅ Evaluated | Improved structure, reduced hallucinations and added constraints. |
 
 ---
 
-## Product Comparison: iPhone 15 Pro vs. Samsung Galaxy S24
+# 📌 Version 1 Evaluation
 
-### 1. Brief Overview of Each Product
+## Output Observation
+
+| Temperature | Observation |
+|-------------|-------------|
+| **0.0** | Highly factual, structured, and consistent. Responses remained objective with minimal variation, making this version best suited for technical product comparisons. |
+| **0.5** | Achieved the best balance between factual accuracy, readability, and natural language generation. Recommendations were well-justified while maintaining reliability. |
+| **1.0** | Produced more descriptive and conversational responses but introduced slight verbosity and minor inconsistencies. Although factually correct, the output was less concise than lower temperatures. |
+
+
+---
+
+## Hallucination Analysis
+
+| Category                 | Observation                                                                                                                                                                                                                                                  |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Major Hallucinations** | None detected. All major specifications matched publicly available information.                                                                                                                                                                              |
+| **Potential Issues**     | Apple battery capacity and RAM were presented as exact values despite Apple not officially publishing them. Some pricing statements were generalized and may vary by region. Certain recommendations contained subjective wording without explicit evidence. |
+
+
+## Final Verdict
+
+> [!TIP]
+> Temperature **0.5** produced the best balance between structure and readability.
+
+---
+## 🌡️ Temperature 0.0
+
+> [!IMPORTANT]
+> **Raw LLM Output (Unmodified)**
+
+## 1. Brief Overview of Each Product
 
 **iPhone 15 Pro**
 The iPhone 15 Pro is Apple's premium, compact flagship for 2023. It represents the pinnacle of Apple's smartphone technology, featuring a new titanium design, the most powerful mobile chip to date, an advanced camera system, and the introduction of USB-C. It's designed for users who demand top-tier performance, a robust ecosystem, and a refined user experience within the Apple universe.
@@ -32,7 +70,7 @@ The iPhone 15 Pro is Apple's premium, compact flagship for 2023. It represents t
 **Samsung Galaxy S24**
 The Samsung Galaxy S24 is Samsung's standard flagship for 2024, offering a premium Android experience with a focus on innovation, particularly in AI. It boasts a vibrant display, a versatile camera setup, and a sleek design. The S24 aims to deliver a cutting-edge Android experience with extensive customization options and a commitment to long-term software support.
 
-### 2. Key Features Comparison
+## 2. Key Features Comparison
 
 | Feature             | iPhone 15 Pro                                  | Samsung Galaxy S24                                     |
 | :------------------ | :--------------------------------------------- | :----------------------------------------------------- |
@@ -50,9 +88,9 @@ The Samsung Galaxy S24 is Samsung's standard flagship for 2024, offering a premi
 | **Software Support**| Typically 5-7 years of major iOS updates       | 7 years of major Android OS updates and security updates |
 | **Unique Features** | Action Button, Dynamic Island, ProMotion, ProRes Video, Cinematic Mode | Galaxy AI (Circle to Search, Live Translate, Photo Assist), Always On Display customization |
 
-### 3. Advantages & Disadvantages
+## 3. Advantages & Disadvantages
 
-#### iPhone 15 Pro
+### iPhone 15 Pro
 
 **Advantages:**
 *   **Unmatched Performance:** The A17 Pro chip delivers industry-leading CPU and GPU performance, making it superior for demanding tasks, high-end gaming, and professional applications like video editing.
@@ -68,7 +106,7 @@ The Samsung Galaxy S24 is Samsung's standard flagship for 2024, offering a premi
 *   **Slower Charging Speeds:** Significantly slower wired charging compared to many Android phones.
 *   **Limited Telephoto Zoom:** The 3x optical zoom is good but less versatile than the longer zooms found on some competitors.
 
-#### Samsung Galaxy S24
+### Samsung Galaxy S24
 
 **Advantages:**
 *   **Innovative AI Features:** Galaxy AI introduces powerful on-device capabilities like Circle to Search, Live Translate, and advanced Photo Assist.
@@ -84,7 +122,7 @@ The Samsung Galaxy S24 is Samsung's standard flagship for 2024, offering a premi
 *   **Resale Value:** Typically lower than iPhones, though the extended software support may help mitigate this over time.
 *   **Software Updates:** While long-term support is excellent, immediate OS updates can sometimes lag behind Apple's.
 
-### 4. Performance
+## 4. Performance
 
 Both devices offer **top-tier performance** for daily tasks, demanding applications, and high-end gaming.
 
@@ -92,13 +130,13 @@ Both devices offer **top-tier performance** for daily tasks, demanding applicati
 
 *   **Samsung Galaxy S24 (Snapdragon 8 Gen 3 / Exynos 2400):** The Snapdragon 8 Gen 3 is an incredibly powerful chip, offering performance that is very close to the A17 Pro, making the S24 exceptionally fast and capable for all tasks. The Exynos 2400, while also very strong, might show a slight lag in peak performance compared to the A17 Pro and Snapdragon 8 Gen 3 in some benchmarks. However, for the vast majority of users, both chip variants will deliver a fluid, lag-free experience.
 
-### 5. Price and Value for Money
+## 5. Price and Value for Money
 
 *   **iPhone 15 Pro:** Commands a premium price point, typically starting higher than the Galaxy S24. However, it offers excellent long-term value due to its industry-leading performance, extended software support (historically strong, now matched by Samsung), and superior resale value. The investment often pays off over several years.
 
 *   **Samsung Galaxy S24:** Also a premium device, often starting at a slightly lower price point than the iPhone 15 Pro and more prone to discounts shortly after launch. Its new 7-year software update policy significantly boosts its long-term value, making it a very strong contender for value for money, especially for users who plan to keep their phone for many years. The inclusion of innovative AI features also adds to its perceived value.
 
-### 6. Which Type of User Each Product is Best Suited For
+## 6. Which Type of User Each Product is Best Suited For
 
 *   **iPhone 15 Pro:**
     *   **Apple Ecosystem Users:** Those deeply integrated into Apple's ecosystem (Mac, iPad, Apple Watch, AirPods).
@@ -114,7 +152,7 @@ Both devices offer **top-tier performance** for daily tasks, demanding applicati
     *   **Long-Term Value Buyers:** Those who plan to keep their phone for many years and benefit from Samsung's extended software support.
     *   **Budget-Conscious Premium Buyers:** Users looking for a top-tier flagship experience that might be slightly more affordable or prone to discounts.
 
-### 7. Final Recommendation with Justification
+## 7. Final Recommendation with Justification
 
 Both the iPhone 15 Pro and Samsung Galaxy S24 are exceptional smartphones, representing the best their respective ecosystems have to offer. The choice ultimately hinges on individual priorities and ecosystem preference.
 
@@ -127,16 +165,13 @@ The iPhone 15 Pro maintains its edge in raw performance and video capabilities, 
 
 ---
 
-# 🌡️ Temperature 0.5
+## 🌡️ Temperature 0.5
+
+> [!IMPORTANT]
+> **Raw LLM Output (Unmodified)**
 
 
-As a product analyst, I've conducted a head-to-head comparison between two of the most popular flagship smartphones: the **iPhone 15 Pro** and the **Samsung Galaxy S24**. This analysis aims to provide a clear, objective, and concise overview to help potential buyers make an informed decision.
-
----
-
-## Product Comparison: iPhone 15 Pro vs. Samsung Galaxy S24
-
-### 1. Brief Overview of Each Product
+## 1. Brief Overview of Each Product
 
 **iPhone 15 Pro:**
 The iPhone 15 Pro is Apple's premium, compact flagship smartphone for 2023. It represents the pinnacle of Apple's engineering, featuring a new titanium design, the powerful A17 Pro chip, a customizable Action Button, and an advanced camera system. It operates on the iOS ecosystem, known for its intuitive interface, strong privacy, and tight integration with other Apple devices.
@@ -144,7 +179,7 @@ The iPhone 15 Pro is Apple's premium, compact flagship smartphone for 2023. It r
 **Samsung Galaxy S24:**
 The Samsung Galaxy S24 is Samsung's standard flagship smartphone for 2024. While not the "Ultra" model, it offers a compelling package with a premium design, the latest Snapdragon 8 Gen 3 for Galaxy (or Exynos 2400 in some regions) chip, a vibrant Dynamic AMOLED 2X display, and a suite of new "Galaxy AI" features. It runs on Android with Samsung's One UI, providing extensive customization and an open ecosystem.
 
-### 2. Key Features Comparison
+## 2. Key Features Comparison
 
 | Feature             | iPhone 15 Pro                                  | Samsung Galaxy S24                                  |
 | :------------------ | :--------------------------------------------- | :-------------------------------------------------- |
@@ -165,9 +200,9 @@ The Samsung Galaxy S24 is Samsung's standard flagship smartphone for 2024. While
 | **Software Support**| Typically 5-6 years of OS updates              | 7 years of OS updates and security patches          |
 | **Unique Features** | Action Button, Dynamic Island, Satellite SOS, USB 3 speeds (USB-C) | Galaxy AI (Circle to Search, Live Translate, Chat Assist, Photo Assist), Samsung DeX |
 
-### 3. Advantages and Disadvantages
+## 3. Advantages and Disadvantages
 
-#### iPhone 15 Pro
+### iPhone 15 Pro
 
 **Advantages:**
 *   **Unmatched Performance:** The A17 Pro chip offers industry-leading CPU and GPU performance, excelling in demanding tasks, gaming, and video editing.
@@ -184,7 +219,7 @@ The Samsung Galaxy S24 is Samsung's standard flagship smartphone for 2024. While
 *   **Battery Life:** While good, the smaller battery might not always match the endurance of larger Android phones.
 *   **USB-C Limitations:** While it has USB-C, only the Pro models get USB 3 speeds; the standard iPhone 15 is USB 2.
 
-#### Samsung Galaxy S24
+### Samsung Galaxy S24
 
 **Advantages:**
 *   **Galaxy AI Features:** A suite of innovative AI tools for productivity, communication, and photo editing.
@@ -201,21 +236,21 @@ The Samsung Galaxy S24 is Samsung's standard flagship smartphone for 2024. While
 *   **Value Depreciation:** Android phones, including Samsung flagships, tend to lose value faster than iPhones.
 *   **Regional Chip Variation:** Some regions receive the Exynos 2400, which can sometimes perform differently than the Snapdragon variant.
 
-### 4. Performance
+## 4. Performance
 
 Both devices offer top-tier performance for daily tasks, demanding applications, and high-end gaming.
 
 *   **iPhone 15 Pro (A17 Pro):** The A17 Pro chip is a marvel of mobile engineering. It delivers unparalleled single-core and multi-core CPU performance, and its GPU is exceptionally powerful, making it the leader in mobile gaming and intensive tasks like 4K video editing. The iOS operating system is highly optimized, ensuring a consistently smooth and fluid user experience.
 *   **Samsung Galaxy S24 (Snapdragon 8 Gen 3 for Galaxy / Exynos 2400):** The Snapdragon 8 Gen 3 for Galaxy is a highly capable chip, offering significant improvements over its predecessor. It handles all current apps and games with ease, providing a fast and responsive experience. While it may not always match the A17 Pro in raw benchmark numbers, the real-world performance difference for most users is negligible. The "for Galaxy" variant often includes exclusive clock speed boosts. The Exynos 2400 is also a very powerful chip, though its performance can vary slightly from the Snapdragon version. Samsung's One UI is generally smooth, though some users might perceive it as slightly less fluid than iOS due to its heavier customization.
 
-### 5. Price and Value for Money
+## 5. Price and Value for Money
 
 Both phones are premium flagships with corresponding price tags.
 
 *   **iPhone 15 Pro:** Starts at a higher price point. Its value for money comes from its cutting-edge performance, premium build, long software support (though shorter than S24's stated 7 years), and excellent resale value. For users deeply embedded in the Apple ecosystem, the value proposition is enhanced by seamless integration.
 *   **Samsung Galaxy S24:** Typically starts at a slightly lower price than the iPhone 15 Pro. Its value for money is derived from its advanced display, innovative AI features, robust camera system, and industry-leading 7 years of software support. While it may depreciate faster than an iPhone, the longer software commitment adds significant long-term value for users who keep their phones for many years. Regular sales and promotions can also make it a more attractive purchase.
 
-### 6. Which Type of User Each Product is Best Suited For
+## 6. Which Type of User Each Product is Best Suited For
 
 *   **iPhone 15 Pro is best suited for:**
     *   **Apple Ecosystem Loyalists:** Users who already own other Apple devices (Mac, iPad, Apple Watch) and value seamless integration.
@@ -232,7 +267,7 @@ Both phones are premium flagships with corresponding price tags.
     *   **Display Connoisseurs:** Users who prioritize a brighter, more vibrant display experience.
     *   **Budget-Conscious Flagship Buyers:** Those looking for a premium experience with potentially better deals and long-term software support.
 
-### 7. Final Recommendation with Justification
+## 7. Final Recommendation with Justification
 
 Both the iPhone 15 Pro and the Samsung Galaxy S24 are outstanding smartphones, representing the best their respective ecosystems have to offer. The "better" choice ultimately depends on individual priorities and existing ecosystem preference.
 
@@ -249,21 +284,17 @@ However, the Samsung Galaxy S24 counters with groundbreaking AI features that of
 
 ---
 
-# 🌡️ Temperature 1.0
+## 🌡️ Temperature 1.0
 
-As a product analyst, I've conducted a head-to-head comparison of two leading smartphones: the **iPhone 15 Pro** and the **Samsung Galaxy S24**. These devices represent the pinnacle of their respective ecosystems, offering premium experiences, advanced technology, and distinct philosophies.
-
----
-
-## Product Comparison: iPhone 15 Pro vs. Samsung Galaxy S24
-
-### 1. Brief Overview of Each Product
+> [!IMPORTANT]
+> **Raw LLM Output (Unmodified)**
+## 1. Brief Overview of Each Product
 
 *   **iPhone 15 Pro:** Apple's compact flagship for 2023, featuring a new lightweight titanium design, the powerful A17 Pro chip, an advanced camera system with a 3x telephoto lens, and the customizable Action Button. It runs on iOS, known for its intuitive interface, strong privacy, and seamless ecosystem integration.
 
 *   **Samsung Galaxy S24:** Samsung's standard flagship for 2024, emphasizing AI innovation with its "Galaxy AI" suite, a bright and vibrant Dynamic AMOLED 2X display, and a versatile triple-camera setup. It runs on Android with Samsung's One UI, offering extensive customization and openness, alongside an industry-leading 7 years of software updates.
 
-### 2. Key Features
+## 2. Key Features
 
 Here's a side-by-side look at the critical specifications and features:
 
@@ -284,7 +315,7 @@ Here's a side-by-side look at the critical specifications and features:
 | **Special Features**| Dynamic Island, Action Button, ProRes Video, Ray Tracing, Satellite SOS | Galaxy AI, DeX, Vision Booster, Always-On Display, 7 years OS updates |
 | **Water/Dust Res.**| IP68                                                        | IP68                                                         |
 
-### 3. Advantages
+## 3. Advantages
 
 **iPhone 15 Pro:**
 
@@ -305,7 +336,7 @@ Here's a side-by-side look at the critical specifications and features:
 *   **DeX Experience:** Allows the phone to power a desktop-like experience when connected to an external display.
 *   **Charging Speed:** Slightly faster wired charging at 25W.
 
-### 4. Disadvantages
+## 4. Disadvantages
 
 **iPhone 15 Pro:**
 
@@ -323,19 +354,19 @@ Here's a side-by-side look at the critical specifications and features:
 *   **Resale Value:** iPhones typically hold their value better over time.
 *   **USB-C Speed:** The USB-C port is limited to USB 3.2 Gen 1 (5Gbps), slower than the iPhone 15 Pro.
 
-### 5. Performance
+## 5. Performance
 
 Both phones are absolute powerhouses, capable of handling any task thrown at them.
 
 *   **iPhone 15 Pro:** The A17 Pro chip is an engineering marvel, consistently topping benchmark charts. It delivers unparalleled performance in demanding games, video editing, and complex computational photography tasks. Its efficiency ensures smooth operation and excellent sustained performance without significant throttling.
 *   **Samsung Galaxy S24:** In regions with the Snapdragon 8 Gen 3, the S24 is incredibly fast and competitive with the A17 Pro for most daily tasks and even intensive gaming. The Exynos 2400 variant, while still very capable for everyday use and modern games, generally shows a slight performance gap compared to the A17 Pro in benchmarks and some heavy workloads. However, for 99% of users, either chip will provide a fluid and responsive experience.
 
-### 6. Price and Value for Money
+## 6. Price and Value for Money
 
 *   **iPhone 15 Pro:** Generally positioned at a higher price point. Value for money comes from its industry-leading performance, superior video capabilities, premium build, strong brand ecosystem, and excellent long-term resale value. While expensive, it delivers a top-tier experience that can last for many years.
 *   **Samsung Galaxy S24:** Offers a slightly more accessible entry price for a flagship experience. Its value is significantly enhanced by the groundbreaking 7 years of software and security updates, which dramatically extends its lifespan and relevance. The integration of Galaxy AI also adds unique functionality not found elsewhere. Good value for those seeking a premium Android phone with long-term support.
 
-### 7. Which Type of User Each Product is Best Suited For
+## 7. Which Type of User Each Product is Best Suited For
 
 *   **iPhone 15 Pro is best suited for:**
     *   **Apple Ecosystem Users:** Those already invested in AirPods, Apple Watch, Mac, or iPad.
@@ -352,7 +383,7 @@ Both phones are absolute powerhouses, capable of handling any task thrown at the
     *   **Power Users & Multitaskers:** Benefits from features like DeX and the versatile camera system.
     *   **Value Seekers:** Users wanting a premium flagship experience with cutting-edge features and extended support at a slightly lower initial cost.
 
-### 8. Final Recommendation with Justification
+## 8. Final Recommendation with Justification
 
 Both the iPhone 15 Pro and the Samsung Galaxy S24 are exceptional smartphones that stand at the forefront of mobile technology. The "better" choice ultimately depends on individual priorities and ecosystem preference.
 
@@ -362,50 +393,453 @@ Both the iPhone 15 Pro and the Samsung Galaxy S24 are exceptional smartphones th
 
 **In essence:** For the absolute best performance and video capabilities within a highly integrated ecosystem, the **iPhone 15 Pro** is king. For AI innovation, Android flexibility, and unparalleled long-term software support, the **Samsung Galaxy S24** offers a compelling and future-proof package.
 
-
 ---
 
-
-## 📝 Observations
-
-| Temperature | Observation |
-|-------------|-------------|
-| **0.0** | Produced the most structured and deterministic output. Information remained factual but the writing style was less engaging. |
-| **0.5** | Achieved the best balance between structure, readability, and completeness. |
-| **1.0** | More descriptive and conversational, but introduced additional subjective wording and unnecessary verbosity. |
-
----
-
-# ⚠️ Hallucination Analysis
-
-| Observation | Details |
-|-------------|---------|
-| Hallucinations | No major factual hallucinations observed. |
-| Potential Issues | Some specifications such as pricing and regional chip variants may differ depending on location. |
-| Subjective Claims | Terms like "industry-leading" and "best-in-class" are qualitative and should be treated as opinions. |
 
 
 ---
 
-# 🔧 Prompt Improvements
+# 🚀 Version 2 Prompt Changes
 
-- [ ] Require the model to state **"Information not available"** instead of assuming missing facts.
-- [ ] Distinguish **objective specifications** from **subjective opinions**.
-- [ ] Mention regional hardware differences where applicable.
-- [ ] Reduce unnecessary explanations for improved conciseness.
-- [ ] Use a fixed output structure for greater consistency.
+| Improvement | Purpose |
+|------------|---------|
+| Added explicit role | Better consistency |
+| Added objective | Reduced ambiguity |
+| Added constraints | Reduced hallucinations |
+| Added confidence rating | More reliable recommendations |
+| Added uncertainty handling | Prevented assumptions |
 
 ---
 
-# 🏁 Final Verdict
+# 📌 Version 2 Evaluation
+
+## Output Obeservation
+
+| Temperature | Observation                                                                                                                                            |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **0.0**     | Most accurate and deterministic. Clearly indicates unavailable information and follows the prompt precisely.                                           |
+| **0.5**     | Best balance between factual accuracy, readability, and user-friendly explanations. Recommendations are well justified without unnecessary creativity. |
+| **1.0**     | More expressive and detailed while maintaining good structure. Minor verbosity appears but factual consistency remains strong.                         |
+
+
+## Hallucination Analysis
+
+| Category                 | Observation                                                                                                                                                                                                                           |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Major Hallucinations** | None detected.                                                                                                                                                                                                                        |
+| **Minor Issues**         | Some unofficial specifications (such as Apple RAM and battery capacity) were still referenced but were correctly labeled as unofficial or unavailable. Regional pricing remains approximate because exact prices vary across markets. |
+
+
+## Final Verdict
 
 > [!TIP]
-> **Temperature 0.5** produced the highest-quality response by balancing factual consistency, readability, and structure. Future prompt versions should focus on reducing subjective language and explicitly handling uncertain or unavailable information.
+> Version 2 produced more consistent and reliable responses.
+> 
+---
+
+## 🌡️ Temperature 0.0
+
+> [!IMPORTANT]
+> **Raw LLM Output (Unmodified)**
+
+
+## 1. Brief Overview
+
+The **iPhone 15 Pro** is Apple's premium compact flagship, released in September 2023. It represents the pinnacle of Apple's smartphone technology, featuring a new titanium design, the powerful A17 Pro chip, and advanced camera capabilities, including a customizable Action Button and USB-C connectivity. It runs on iOS, known for its intuitive interface and robust ecosystem.
+
+The **Samsung Galaxy S24** is Samsung's standard flagship for 2024, launched in January 2024. It offers a refined design, a vibrant display, and a versatile camera system. A key highlight is the integration of "Galaxy AI" features, aiming to enhance user experience through intelligent software capabilities. It runs on Android with Samsung's One UI, offering extensive customization and multitasking options.
+
+## 2. Key Specifications
+
+| Feature             | iPhone 15 Pro                                  | Samsung Galaxy S24                                                              |
+| :------------------ | :--------------------------------------------- | :------------------------------------------------------------------------------ |
+| **Display**         | 6.1-inch Super Retina XDR OLED                 | 6.2-inch Dynamic AMOLED 2X                                                      |
+| Resolution          | 2556 x 1179 pixels                             | 2340 x 1080 pixels                                                              |
+| Refresh Rate        | ProMotion (1-120Hz adaptive)                   | 1-120Hz adaptive                                                                |
+| Peak Brightness     | Up to 2000 nits (HDR)                          | Up to 2600 nits                                                                 |
+| **Processor**       | Apple A17 Pro                                  | Snapdragon 8 Gen 3 for Galaxy (US, Canada, China) / Exynos 2400 (Europe, Asia) |
+| **RAM**             | 8GB (Information not officially disclosed by manufacturer, widely reported) | 8GB                                                                             |
+| **Storage Options** | 128GB, 256GB, 512GB, 1TB                       | 128GB, 256GB, 512GB                                                             |
+| **Main Camera**     | 48MP (f/1.78, sensor-shift OIS)                | 50MP (f/1.8, OIS)                                                               |
+| **Ultrawide Camera**| 12MP (f/2.2, 120° FoV)                         | 12MP (f/2.2, 120° FoV)                                                          |
+| **Telephoto Camera**| 12MP (f/2.8, 3x optical zoom, OIS)             | 10MP (f/2.4, 3x optical zoom, OIS)                                              |
+| **Front Camera**    | 12MP (f/1.9, autofocus)                        | 12MP (f/2.2, autofocus)                                                         |
+| **Battery Capacity**| Information not officially disclosed by manufacturer (widely reported ~3274 mAh) | 4000 mAh                                                                        |
+| **Wired Charging**  | Up to 20W (approx. 50% in 30 min)              | Up to 25W (approx. 50% in 30 min)                                               |
+| **Wireless Charging**| 15W MagSafe, 7.5W Qi2/Qi                       | 15W Qi, 4.5W reverse wireless charging                                          |
+| **Operating System**| iOS 17 (at launch)                             | Android 14 with One UI 6.1 (at launch)                                          |
+| **Build Materials** | Titanium frame, Ceramic Shield front, textured matte glass back | Armor Aluminum frame, Gorilla Glass Victus 2 front & back                       |
+| **Dimensions**      | 146.6 x 70.6 x 8.25 mm                         | 147.0 x 70.6 x 7.6 mm                                                           |
+| **Weight**          | 187 grams                                      | 167 grams                                                                       |
+| **IP Rating**       | IP68 (max depth 6 meters for up to 30 min)     | IP68 (max depth 1.5 meters for up to 30 min)                                    |
+| **Connectivity**    | 5G, Wi-Fi 6E, Bluetooth 5.3, USB-C (USB 3 speeds) | 5G, Wi-Fi 6E, Bluetooth 5.3, USB-C (USB 3.2 Gen 1 speeds)                       |
+| **Unique Features** | Dynamic Island, Action Button, ProRes video recording, Hardware-accelerated ray tracing | Galaxy AI (Circle to Search, Live Translate, Chat Assist, Photo Assist), DeX support, Always On Display |
+
+## 3. Advantages
+
+### iPhone 15 Pro
+*   **Processor Performance:** The A17 Pro chip generally offers industry-leading single-core and multi-core performance, particularly strong for gaming and demanding applications.
+*   **Build Quality & Materials:** Features a lighter and more durable titanium frame, along with Apple's Ceramic Shield front cover for enhanced drop resistance.
+*   **Video Capabilities:** Offers advanced video recording features like ProRes video up to 4K at 60fps (external recording), Log video, and ACES support, making it a strong tool for professional videographers.
+*   **Ecosystem & Software Updates:** Benefits from Apple's tightly integrated ecosystem and typically receives longer software update support compared to Android devices.
+*   **Action Button:** A customizable physical button that can be assigned to various functions, offering quick access to preferred features.
+*   **USB-C (USB 3 speeds):** The new USB-C port supports faster data transfer speeds (up to 10Gbps) compared to the standard S24, beneficial for large file transfers.
+
+### Samsung Galaxy S24
+*   **Display Brightness:** Features a significantly brighter display with a peak brightness of 2600 nits, offering superior visibility in direct sunlight.
+*   **Galaxy AI Features:** Integrates a suite of AI-powered tools (e.g., Circle to Search, Live Translate, Chat Assist, Photo Assist) that enhance productivity and communication.
+*   **Software Update Commitment:** Samsung has committed to 7 years of OS updates and security patches, matching Google's Pixel line and surpassing Apple's typical support duration.
+*   **Customization & Openness:** Android and One UI offer greater flexibility for customization, widgets, and sideloading applications.
+*   **Reverse Wireless Charging:** Can wirelessly charge other Qi-compatible devices, such as earbuds or smartwatches.
+*   **DeX Support:** Allows the phone to power a desktop-like experience when connected to an external monitor, keyboard, and mouse.
+*   **Weight:** Noticeably lighter than the iPhone 15 Pro, which can improve handling comfort for some users.
+
+## 4. Disadvantages
+
+### iPhone 15 Pro
+*   **Price:** Generally starts at a higher price point than the standard Galaxy S24.
+*   **Battery Life:** While optimized, the battery capacity is smaller than the S24, and real-world battery life can be comparable or slightly less depending on usage.
+*   **Charging Speed:** Wired charging speeds are slower than many Android competitors, including the S24.
+*   **Ecosystem Lock-in:** The iOS ecosystem can be more restrictive for users accustomed to Android's openness and customization.
+*   **Lack of Reverse Wireless Charging:** Does not offer the ability to wirelessly charge other devices.
+
+### Samsung Galaxy S24
+*   **Processor Consistency (Regional):** The use of different processors (Snapdragon 8 Gen 3 for Galaxy vs. Exynos 2400) across regions can lead to performance inconsistencies, with the Exynos variant sometimes showing slightly lower performance or efficiency in certain benchmarks.
+*   **Build Materials:** While durable, the Armor Aluminum frame and Gorilla Glass Victus 2 are generally considered less premium and potentially less scratch-resistant than the iPhone's titanium and Ceramic Shield.
+*   **Video Capabilities:** While excellent, its video recording features are not as advanced or geared towards professional workflows as the iPhone 15 Pro.
+*   **Software Bloatware:** One UI, while feature-rich, can sometimes include pre-installed apps or features that some users consider bloatware.
+*   **USB-C (USB 3.2 Gen 1 speeds):** The USB-C port supports slower data transfer speeds (up to 5Gbps) compared to the iPhone 15 Pro's USB 3 speeds.
+
+## 5. Performance
+
+Both devices offer top-tier performance suitable for any task, from everyday use to demanding gaming and productivity.
+
+The **iPhone 15 Pro** with its A17 Pro chip generally holds an edge in raw CPU and GPU benchmarks, particularly in single-core performance and sustained gaming performance due to its advanced architecture and hardware-accelerated ray tracing. This makes it exceptionally smooth for high-fidelity gaming and intensive video editing.
+
+The **Samsung Galaxy S24** (especially with the Snapdragon 8 Gen 3 for Galaxy) is also incredibly fast and efficient. The Exynos 2400 variant, while still very capable, may show slight differences in performance and power efficiency compared to the Snapdragon in some regions and specific workloads. For general use, multitasking, and most games, both processors deliver a fluid and responsive experience. Samsung's "Galaxy AI" features are heavily reliant on the NPU (Neural Processing Unit) within its chipsets, demonstrating strong AI processing capabilities.
+
+## 6. Price & Value for Money
+
+**iPhone 15 Pro:**
+*   **Starting Price:** Typically starts around $999 / £999 / €1199 (may vary by region/retailer and storage configuration).
+*   **Value for Money:** Offers premium build materials, a class-leading processor, and a highly refined user experience within the Apple ecosystem. Its strong resale value is also a factor. The value proposition is high for users prioritizing cutting-edge performance, video capabilities, and a long-term, integrated ecosystem experience.
+
+**Samsung Galaxy S24:**
+*   **Starting Price:** Typically starts around $799 / £799 / €899 (may vary by region/retailer and storage configuration).
+*   **Value for Money:** Offers a compelling package with a vibrant display, versatile cameras, and innovative AI features at a more accessible price point than the iPhone 15 Pro. The commitment to 7 years of software updates significantly enhances its long-term value. It provides excellent value for users seeking a feature-rich Android experience with strong AI integration and extended software support.
+
+## 7. Best Suited For
+
+**iPhone 15 Pro is best suited for:**
+*   Users deeply embedded in the Apple ecosystem (Mac, iPad, Apple Watch).
+*   Content creators, especially those focused on high-quality video production, who can leverage ProRes and Log video capabilities.
+*   Mobile gamers who want the absolute best performance and graphics in demanding titles.
+*   Users who prioritize premium build materials (titanium) and a compact, yet powerful, flagship experience.
+*   Those who value long-term software stability and security updates within the iOS framework.
+
+**Samsung Galaxy S24 is best suited for:**
+*   Users who prefer the Android operating system and its customization options.
+*   Individuals who want the latest AI-powered features to enhance daily tasks, communication, and photo editing.
+*   Users who prioritize a brighter display for outdoor visibility.
+*   Those looking for a flagship experience with excellent cameras and performance at a slightly lower price point.
+*   Users who value extended software update longevity (7 years) and the flexibility of features like DeX.
+*   Individuals who appreciate the convenience of reverse wireless charging.
+
+## 8. Final Recommendation
+
+Both the iPhone 15 Pro and Samsung Galaxy S24 are exceptional smartphones, representing the best of their respective ecosystems. There isn't a single "better overall" product, as their strengths cater to different user priorities.
+
+**iPhone 15 Pro** is the better choice for users who prioritize raw performance, especially for gaming and professional video work, and who are invested in the Apple ecosystem. Its premium titanium build and the new Action Button offer a refined user experience.
+
+**Samsung Galaxy S24** is the better choice for users who value innovative AI features, a brighter display, greater software customization, and a longer software update commitment, all at a more competitive price point. Its versatility and AI capabilities make it a strong contender for those seeking a smart, adaptable Android flagship.
+
+**Confidence Rating: High** - The information presented is based on widely accepted product specifications and expert reviews, with clear indications for any regional variations or unofficial data.
+
 
 ---
 
-## 📌 Version Summary
+## 🌡️ Temperature 0.5
 
-| Prompt Version | Status | Notes |
-|----------------|--------|-------|
-| **v1** | ✅ Evaluated | Baseline prompt with good structure but room for improved reliability and output constraints. |
+> [!IMPORTANT]
+> **Raw LLM Output (Unmodified)**
+
+## 1. Brief Overview
+
+The **iPhone 15 Pro** is Apple's premium compact flagship from late 2023, offering a powerful A17 Pro chip, a new customizable Action Button, a titanium design, and advanced camera capabilities. It represents the pinnacle of Apple's smartphone technology for its size.
+
+The **Samsung Galaxy S24** is Samsung's standard compact flagship for early 2024, featuring a vibrant display, a new focus on "Galaxy AI" features, and a sleek design. It aims to deliver a comprehensive Android experience with cutting-edge software and hardware, though its processor may vary by region.
+
+## 2. Key Specifications
+
+| Feature               | iPhone 15 Pro                                 | Samsung Galaxy S24                                                              |
+| :-------------------- | :-------------------------------------------- | :------------------------------------------------------------------------------ |
+| **Display**           | 6.1-inch Super Retina XDR OLED                | 6.2-inch Dynamic AMOLED 2X                                                      |
+| Resolution            | 2556 x 1179 pixels                            | 2340 x 1080 pixels                                                              |
+| Refresh Rate          | ProMotion (1-120Hz adaptive)                  | 1-120Hz adaptive                                                                |
+| Peak Brightness       | 2000 nits (outdoor peak)                      | 2600 nits (peak)                                                                |
+| **Processor**         | Apple A17 Pro (3nm)                           | Qualcomm Snapdragon 8 Gen 3 for Galaxy (US, Canada, China) / Exynos 2400 (other regions) |
+| **RAM**               | Information not available (officially from Apple), widely reported as 8GB | 8GB                                                                             |
+| **Storage Options**   | 128GB, 256GB, 512GB, 1TB                      | 128GB, 256GB                                                                    |
+| **Rear Cameras**      | **Main:** 48MP (f/1.78, OIS)                  | **Main:** 50MP (f/1.8, OIS)                                                     |
+|                       | **Ultrawide:** 12MP (f/2.2)                   | **Ultrawide:** 12MP (f/2.2)                                                     |
+|                       | **Telephoto:** 12MP (3x optical zoom, f/2.8, OIS) | **Telephoto:** 10MP (3x optical zoom, f/2.4, OIS)                               |
+| **Front Camera**      | 12MP (f/1.9)                                  | 12MP (f/2.2)                                                                    |
+| **Battery Capacity**  | Information not available (officially from Apple) | 4000 mAh                                                                        |
+| **Wired Charging**    | Up to ~27W (50% in ~30 min)                   | Up to 25W (50% in ~30 min)                                                      |
+| **Wireless Charging** | MagSafe (15W), Qi2 (15W), Qi (7.5W)           | Fast Wireless Charging 2.0 (15W), Wireless PowerShare                           |
+| **Operating System**  | iOS 17 (at launch)                            | Android 14 with One UI 6.1 (at launch)                                          |
+| **Materials**         | Titanium frame, Ceramic Shield front, textured matte glass back | Armor Aluminum frame, Gorilla Glass Victus 2 front/back                         |
+| **Dimensions**        | 146.6 x 70.6 x 8.25 mm                        | 147 x 70.6 x 7.6 mm                                                             |
+| **Weight**            | 187g                                          | 167g                                                                            |
+| **Water/Dust Res.**   | IP68                                          | IP68                                                                            |
+| **Port**              | USB-C (USB 3 speeds)                          | USB-C (USB 2 speeds)                                                            |
+| **Special Features**  | Action Button, Dynamic Island, ProMotion, Hardware Ray Tracing | Galaxy AI features (Circle to Search, Live Translate, Chat Assist, Photo Assist), DeX, 7 years OS updates |
+
+## 3. Advantages
+
+**iPhone 15 Pro:**
+*   **Superior Processor:** The A17 Pro chip generally offers industry-leading raw performance, particularly in single-core tasks and sustained gaming, with hardware-accelerated ray tracing.
+*   **Premium Build Materials:** Lighter and more durable titanium frame compared to aluminum, contributing to a more premium feel.
+*   **Action Button:** A customizable physical button for quick access to various functions, offering a unique user interaction.
+*   **Higher Data Transfer Speed:** USB-C port supports USB 3 speeds (up to 10Gbps), beneficial for professionals transferring large files.
+*   **Consistent Performance:** Global availability of the A17 Pro chip ensures consistent performance regardless of region.
+*   **Robust Ecosystem:** Deep integration with Apple's ecosystem (AirDrop, iCloud, iMessage, Apple Watch, etc.) is a significant advantage for existing Apple users.
+
+**Samsung Galaxy S24:**
+*   **Brighter Display:** Offers a higher peak brightness (2600 nits) for better visibility in direct sunlight.
+*   **Galaxy AI Features:** Introduces a suite of on-device and cloud-based AI tools like Circle to Search, Live Translate, Chat Assist, and advanced Photo Assist, which can enhance productivity and user experience.
+*   **Longer Software Support:** Samsung promises 7 years of OS updates and security patches, potentially offering longer device longevity.
+*   **Lighter Weight:** Significantly lighter at 167g, which can improve handling comfort during extended use.
+*   **More Open Ecosystem:** Android offers greater customization options, more sideloading flexibility, and easier file management.
+*   **DeX Support:** Allows the phone to power a desktop-like experience when connected to an external monitor, enhancing productivity.
+*   **Potentially Better Value:** Often available at a lower starting price point for its base model.
+
+## 4. Disadvantages
+
+**iPhone 15 Pro:**
+*   **Higher Starting Price:** Generally more expensive, especially for the base storage configuration.
+*   **Heavier:** Noticeably heavier than the S24, which some users might find less comfortable.
+*   **Slower Charging:** Wired charging speed is competitive but not class-leading compared to some Android rivals.
+*   **Closed Ecosystem:** While an advantage for some, the restrictive nature of iOS and Apple's ecosystem can be a disadvantage for users seeking more flexibility and customization.
+*   **No Official Battery Capacity:** Apple does not officially disclose the mAh capacity, making direct comparisons difficult.
+
+**Samsung Galaxy S24:**
+*   **Regional Processor Variation:** The use of Exynos 2400 in some regions can lead to inconsistent performance expectations compared to the Snapdragon 8 Gen 3 for Galaxy, with the Exynos often perceived as slightly less powerful or efficient in some benchmarks.
+*   **Slower USB-C Port:** The USB-C port supports only USB 2.0 speeds (480Mbps), making large file transfers slower than the iPhone 15 Pro.
+*   **Less Premium Build (subjective):** While still premium, the Armor Aluminum frame and Gorilla Glass Victus 2 are generally considered a step below the iPhone's titanium and Ceramic Shield.
+*   **Software Overlap/Bloat (subjective):** One UI, while feature-rich, can sometimes feel more complex or include more pre-installed apps than stock Android or iOS.
+*   **Shorter Storage Options:** Only available up to 256GB, which might be limiting for users who store a lot of media or apps.
+
+## 5. Performance
+
+The **iPhone 15 Pro** with its A17 Pro chip delivers exceptional performance across the board. It excels in raw CPU and GPU power, making it ideal for demanding games, video editing, and complex applications. Its efficiency is also top-tier, contributing to solid battery life despite the undisclosed capacity. iOS is highly optimized, ensuring smooth and consistent performance.
+
+The **Samsung Galaxy S24** offers strong performance, but it's important to note the regional processor differences.
+*   **Snapdragon 8 Gen 3 for Galaxy** (US, Canada, China): This variant provides excellent performance, rivaling the A17 Pro in many real-world scenarios and often surpassing it in multi-core tasks. It's highly capable for gaming, multitasking, and utilizing the new AI features efficiently.
+*   **Exynos 2400** (Europe, Asia, Africa): While a powerful chip, the Exynos 2400 has historically shown some variance in performance and power efficiency compared to its Snapdragon counterpart in benchmarks and real-world tests. It is still very capable for daily tasks, gaming, and AI features, but users in Exynos regions might experience slightly different battery life or peak performance.
+
+Both phones offer fluid user experiences, but the iPhone 15 Pro generally holds an edge in sustained peak performance and consistency across all regions. The S24's AI features are a testament to its processing capabilities, regardless of the specific chip.
+
+## 6. Price & Value for Money
+
+*   **iPhone 15 Pro:** Starting price typically around $999 / €1199 / £999 for the 128GB model (May vary by region/retailer).
+*   **Samsung Galaxy S24:** Starting price typically around $799 / €899 / £799 for the 128GB model (May vary by region/retailer).
+
+The **iPhone 15 Pro** commands a higher price, reflecting its premium materials, cutting-edge processor, and robust ecosystem. For users deeply embedded in Apple's ecosystem or those prioritizing the absolute best raw performance and build quality, the value proposition is strong. Its resale value also tends to be higher.
+
+The **Samsung Galaxy S24** offers excellent value, particularly given its competitive feature set, vibrant display, and the addition of Galaxy AI. Its lower starting price makes it more accessible, and the promise of 7 years of software updates enhances its long-term value, potentially offsetting the perceived premium of the iPhone. For those seeking a high-end Android experience without the absolute top-tier price, the S24 presents a compelling package.
+
+## 7. Best Suited For
+
+**iPhone 15 Pro is best suited for:**
+*   **Existing Apple Users:** Those already invested in the Apple ecosystem will find seamless integration and a familiar user experience.
+*   **Performance Enthusiasts:** Users who demand the absolute best raw processing power for gaming, professional apps, or future-proofing.
+*   **Content Creators/Professionals:** The USB 3 speeds for data transfer and ProRes video recording capabilities make it attractive for those who frequently move large files.
+*   **Users Prioritizing Build Quality:** Those who appreciate premium materials like titanium and the Ceramic Shield display.
+*   **Privacy-Conscious Users:** Apple's reputation for privacy and data security is often a key differentiator.
+
+**Samsung Galaxy S24 is best suited for:**
+*   **Android Enthusiasts:** Users who prefer the customization, flexibility, and open nature of the Android operating system.
+*   **AI Feature Seekers:** Early adopters or users who can leverage the new Galaxy AI features for productivity, communication, and creativity.
+*   **Value-Conscious Flagship Buyers:** Those looking for a high-end smartphone experience with excellent features at a more accessible price point.
+*   **Users Prioritizing Longevity:** With 7 years of software updates, it's a good choice for those who keep their phones for an extended period.
+*   **Multitaskers:** DeX support offers a unique desktop-like experience for enhanced productivity.
+*   **Users Who Prefer Brighter Displays:** The S24's higher peak brightness is beneficial in sunny conditions.
+
+## 8. Final Recommendation
+
+**Which product is better overall:** Neither product is definitively "better overall" as they cater to different ecosystems and priorities. Both are excellent flagship smartphones.
+
+**Which type of user should choose iPhone 15 Pro:**
+Choose the **iPhone 15 Pro** if you are already an Apple user, prioritize industry-leading raw performance, appreciate premium build materials (titanium), value the tight integration of the Apple ecosystem, and need faster data transfer speeds via USB-C. It's also ideal for those who prefer the simplicity and consistent experience of iOS.
+
+**Which type of user should choose Samsung Galaxy S24:**
+Choose the **Samsung Galaxy S24** if you prefer the Android operating system's flexibility and customization, are excited by the new "Galaxy AI" features, desire a brighter display, value a lighter phone, and appreciate a longer software support commitment. It offers a fantastic flagship experience at a more competitive price point.
+
+**Confidence Rating:** High
+
+
+
+---
+
+## 🌡️ Temperature 1.0
+
+> [!IMPORTANT]
+> **Raw LLM Output (Unmodified)**
+## 1. Brief Overview
+
+The **iPhone 15 Pro** is Apple's premium flagship smartphone released in September 2023. It features a titanium design, Apple's latest A17 Pro chip, a ProMotion display, and a versatile triple-camera system with a new Action Button and USB-C connectivity. It runs on iOS, known for its strong ecosystem integration and privacy features.
+
+The **Samsung Galaxy S24** is Samsung's standard flagship smartphone, part of the S24 series launched in January 2024. It features a refined design, Samsung's latest chipset (either Snapdragon 8 Gen 3 for Galaxy or Exynos 2400 depending on region), a vibrant Dynamic AMOLED 2X display, and a capable triple-camera setup. A key focus for the S24 series is the integration of "Galaxy AI" features, enhancing various user experiences.
+
+## 2. Key Specifications
+
+| Feature               | iPhone 15 Pro                                 | Samsung Galaxy S24                                      |
+| :-------------------- | :-------------------------------------------- | :------------------------------------------------------ |
+| **Release Date**      | September 2023                                | January 2024                                            |
+| **Display Size**      | 6.1 inches                                    | 6.2 inches                                              |
+| **Display Type**      | Super Retina XDR OLED with ProMotion          | Dynamic AMOLED 2X                                       |
+| **Refresh Rate**      | ProMotion (1Hz to 120Hz adaptive)             | 1Hz to 120Hz adaptive                                   |
+| **Peak Brightness**   | 2000 nits (Outdoor peak)                      | 2600 nits (Outdoor peak)                                |
+| **Processor**         | Apple A17 Pro chip                            | Snapdragon 8 Gen 3 for Galaxy (US/Canada/China) / Exynos 2400 (other regions) |
+| **RAM**               | Information not available (Apple does not officially disclose) | 8GB                                                     |
+| **Storage Options**   | 128GB, 256GB, 512GB, 1TB                      | 128GB, 256GB, 512GB                                     |
+| **Main Camera**       | 48MP (f/1.78), sensor-shift OIS               | 50MP (f/1.8), OIS                                       |
+| **Ultrawide Camera**  | 12MP (f/2.2)                                  | 12MP (f/2.2)                                            |
+| **Telephoto Camera**  | 12MP (f/2.8), 3x optical zoom, OIS            | 10MP (f/2.4), 3x optical zoom, OIS                      |
+| **Front Camera**      | 12MP (f/1.9) with autofocus                   | 12MP (f/2.2) with autofocus                             |
+| **Battery Capacity**  | Information not available (Apple does not officially disclose mAh) | 4000 mAh                                                |
+| **Wired Charging**    | Up to 25W (approx. 50% in 30 min)             | Up to 25W (approx. 50% in 30 min)                       |
+| **Wireless Charging** | MagSafe (15W), Qi2 (15W), Qi (7.5W)           | Qi (15W), Wireless PowerShare (reverse wireless charging) |
+| **Operating System**  | iOS 17 (at launch)                            | Android 14 with One UI 6.1 (at launch)                  |
+| **Build Materials**   | Titanium frame, Ceramic Shield front, textured matte glass back | Armor Aluminum frame, Gorilla Glass Victus 2 front & back |
+| **Water/Dust Resistance** | IP68 (max depth 6 meters for up to 30 min)  | IP68 (max depth 1.5 meters for up to 30 min)            |
+| **Unique Features**   | Action Button, Dynamic Island, USB-C, Wi-Fi 6E, Thread networking, Pro Res Video | Galaxy AI features (Live Translate, Circle to Search, etc.), 7 years of OS updates, Wi-Fi 6E, UWB |
+
+## 3. Advantages
+
+### iPhone 15 Pro
+*   **Superior Raw Performance:** The A17 Pro chip generally offers industry-leading CPU and GPU performance, especially for demanding tasks like gaming and video editing.
+*   **Stronger Ecosystem:** Tightly integrated ecosystem with other Apple devices (Mac, iPad, Apple Watch, AirPods) for seamless continuity.
+*   **Action Button:** Customizable physical button for quick access to various functions.
+*   **ProRes Video & Log Video:** Advanced video capabilities for professional content creators.
+*   **Build Quality:** Lightweight yet durable titanium frame.
+*   **Consistent Software Updates:** Apple is renowned for timely and long-term software support.
+*   **Privacy Focus:** Strong reputation for user privacy and data security.
+
+### Samsung Galaxy S24
+*   **Galaxy AI Features:** Innovative on-device and cloud-based AI functionalities like Live Translate, Circle to Search, Chat Assist, and Generative Edit for photos.
+*   **Brighter Display:** Offers a higher peak brightness, making it potentially easier to view in direct sunlight.
+*   **Longer Software Support:** Samsung commits to 7 years of OS updates and security patches, matching or exceeding Apple's typical support window.
+*   **More Open Ecosystem:** Greater flexibility in terms of app sideloading, customization, and file management.
+*   **Reverse Wireless Charging (Wireless PowerShare):** Can charge other Qi-compatible devices, like earbuds, directly from the phone.
+*   **Storage Flexibility:** Base model starts at 128GB but for the same price, you might get 256GB in some regions.
+*   **Wider Availability of USB-C:** As a broader industry standard, USB-C accessories are widely available and interchangeable.
+
+## 4. Disadvantages
+
+### iPhone 15 Pro
+*   **Higher Starting Price:** Typically launches at a higher price point than the standard Galaxy S24.
+*   **Less Customization:** iOS offers less user interface customization compared to Android.
+*   **Closed Ecosystem:** Can be less flexible for users who prefer to mix and match hardware from different brands or need more control over the file system.
+*   **No Reverse Wireless Charging:** Lacks the ability to charge other devices wirelessly from the phone itself.
+*   **Battery Information Not Disclosed:** Apple does not officially disclose battery mAh, which can make direct comparisons difficult.
+
+### Samsung Galaxy S24
+*   **Regional Processor Variation:** The use of different processors (Snapdragon vs. Exynos) based on region can lead to performance inconsistencies, with the Exynos variant sometimes perceived as less powerful or efficient in direct comparisons.
+*   **Potentially Less Raw Performance:** While powerful, the Snapdragon 8 Gen 3 or Exynos 2400 may not always match the peak CPU/GPU performance of the A17 Pro in certain benchmarks or extremely demanding tasks.
+*   **Slightly Inferior Video Recording:** While excellent, generally considered a step behind the iPhone's video capabilities, especially for professional-grade shooting.
+*   **More Bloatware:** Samsung devices often come with more pre-installed applications and services compared to iPhones.
+
+## 5. Performance
+
+Both devices are premium flagships and deliver exceptional performance for daily tasks, demanding apps, and gaming.
+
+The **iPhone 15 Pro** with its A17 Pro chip generally leads in raw CPU and GPU benchmarks, especially in single-core performance and graphics-intensive gaming. Its optimized integration of hardware and iOS often results in incredibly smooth operation and efficient power management for specific tasks. It excels in professional-grade video editing and rendering on mobile.
+
+The **Samsung Galaxy S24**, powered by either the Snapdragon 8 Gen 3 for Galaxy or Exynos 2400, offers very strong multi-core performance and robust graphics capabilities. The "for Galaxy" variant of the Snapdragon chip often features higher clock speeds than the standard version. Its performance is more than sufficient for all current mobile games and applications. The new Galaxy AI features are heavily reliant on the Neural Processing Unit (NPU) capabilities of these chips, which perform admirably. However, the performance gap between the Snapdragon and Exynos variants can be noticeable in some regions, with the Snapdragon generally performing better in sustained loads and efficiency.
+
+For the average user, both phones offer a fluid and fast experience. For power users focused on the absolute highest gaming frame rates or professional video workflows, the iPhone 15 Pro often holds an edge. For users keen on leveraging advanced AI features, the Galaxy S24 is specifically designed with these capabilities in mind.
+
+## 6. Price & Value for Money
+
+Both the iPhone 15 Pro and the Samsung Galaxy S24 are premium flagship smartphones. Their starting prices are generally competitive within the high-end segment, but the iPhone 15 Pro typically carries a higher base price.
+
+**Information not available for exact regional/carrier specific pricing.**
+
+*   **iPhone 15 Pro:** Often seen as retaining its value well over time. Its strong ecosystem and long-term software support from Apple contribute to its perceived value. However, the higher initial investment might be a barrier for some.
+*   **Samsung Galaxy S24:** Offers significant value through its competitive pricing (often slightly lower than the iPhone Pro models), innovative Galaxy AI features, and a remarkable commitment to 7 years of OS and security updates. This extended support lifespan significantly boosts its long-term value, potentially making it a more future-proof investment in terms of software. The feature set, including the brighter display and AI capabilities, provides a compelling package for the price.
+
+## 7. Best Suited For
+
+### iPhone 15 Pro
+*   **Existing Apple Users:** Those deeply embedded in the Apple ecosystem (Mac, iPad, Apple Watch) will benefit most from seamless integration and continuity features.
+*   **Content Creators & Videographers:** Users who prioritize professional-grade video recording (ProRes, Log video) and need the most powerful mobile chip for editing.
+*   **Privacy-Conscious Users:** Individuals who value Apple's strong reputation for privacy and security.
+*   **Users Seeking Uncompromised Performance:** Those who want the absolute best raw performance for gaming and demanding applications.
+*   **Simplicity and Consistency:** Users who prefer the straightforward and consistent user experience of iOS.
+
+### Samsung Galaxy S24
+*   **Android Enthusiasts:** Users who prefer the flexibility, customization options, and open nature of the Android operating system.
+*   **AI Innovators:** Individuals keen on leveraging the latest on-device AI features for productivity, communication, and creativity.
+*   **Value-Conscious Flagship Buyers:** Those looking for a premium smartphone experience with cutting-edge features and excellent long-term software support at a potentially more accessible price point than the iPhone Pro.
+*   **Users Who Prioritize Display Brightness:** Ideal for those who frequently use their phone outdoors in bright conditions.
+*   **Gamers in Snapdragon Regions:** While Exynos is good, users in regions with the Snapdragon 8 Gen 3 for Galaxy might find its sustained gaming performance slightly superior.
+*   **Power Users Needing Flexibility:** Those who appreciate features like Wireless PowerShare and greater control over their device.
+
+## 8. Final Recommendation
+
+**Which product is better overall:** Neither product is objectively "better overall" as they both excel in different areas and cater to different user preferences. Both are top-tier flagship smartphones offering excellent performance, displays, and camera systems.
+
+**Which type of user should choose iPhone 15 Pro:** Choose the **iPhone 15 Pro** if you are already invested in the Apple ecosystem, prioritize industry-leading raw performance (especially for gaming and video), value Apple's privacy features and consistent software updates, and appreciate the streamlined iOS experience.
+
+**Which type of user should choose Samsung Galaxy S24:** Choose the **Samsung Galaxy S24** if you prefer the Android operating system, are excited by the innovative Galaxy AI features, desire excellent long-term software support (7 years), value a brighter display, or appreciate the flexibility and customization that Android and Samsung's One UI offer, all at a potentially more competitive price point.
+
+**Confidence rating:** High
+
+
+**Which product is better overall:** Neither product is objectively "better overall" as they both excel in different areas and cater to different user preferences. Both are top-tier flagship smartphones offering excellent performance, displays, and camera systems.
+
+**Which type of user should choose iPhone 15 Pro:** Choose the **iPhone 15 Pro** if you are already invested in the Apple ecosystem, prioritize industry-leading raw performance (especially for gaming and video), value Apple's privacy features and consistent software updates, and appreciate the streamlined iOS experience.
+
+**Which type of user should choose Samsung Galaxy S24:** Choose the **Samsung Galaxy S24** if you prefer the Android operating system, are excited by the innovative Galaxy AI features, desire excellent long-term software support (7 years), value a brighter display, or appreciate the flexibility and customization that Android and Samsung's One UI offer, all at a potentially more competitive price point.
+
+**Confidence rating:** High
+
+---
+
+                     |
+
+
+
+---
+
+# 📊 Version Comparison
+
+| Aspect | Version 1 | Version 2 |
+|--------|-----------|-----------|
+| Prompt Clarity | ⭐⭐⭐☆☆ | ⭐⭐⭐⭐⭐ |
+| Structure | ⭐⭐⭐⭐☆ | ⭐⭐⭐⭐⭐ |
+| Hallucination Resistance | ⭐⭐⭐☆☆ | ⭐⭐⭐⭐⭐ |
+| Consistency | ⭐⭐⭐⭐☆ | ⭐⭐⭐⭐⭐ |
+| Recommendation Quality | ⭐⭐⭐⭐☆ | ⭐⭐⭐⭐⭐ |
+
+---
+
+# 🔍 Output Differences
+
+| Area | Version 1 | Version 2 |
+|------|-----------|-----------|
+| Missing Information | Sometimes assumed values | Explicitly reports unavailable information |
+| Recommendation | Simple | Includes confidence level |
+| Tone | Slightly subjective | More objective |
+| Formatting | Variable | Consistent |
+| Reliability | Good | Excellent |
+
+---
+
+# 🏁 Overall Conclusion
+
+> [!SUCCESS]
+>
+> **Version 2** successfully addressed the limitations observed during Version 1 evaluation by introducing stronger constraints, clearer formatting requirements, and explicit uncertainty handling. These changes produced outputs that were more consistent, reliable, and suitable for production use while maintaining readability and completeness.
