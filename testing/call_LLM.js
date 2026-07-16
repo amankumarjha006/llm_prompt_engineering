@@ -14,7 +14,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // ----------------------------
-// Load configuration
+// Load Configuration
 // ----------------------------
 const config = JSON.parse(
   fs.readFileSync(path.join(__dirname, "test_cases.json"), "utf8")
@@ -28,14 +28,26 @@ let prompt = fs.readFileSync(
   "utf8"
 );
 
-// Replace placeholders
+// ----------------------------
+// Replace Variables
+// ----------------------------
+
 for (const [key, value] of Object.entries(config.variables)) {
-  prompt = prompt.replaceAll(`{${key}}`, value);
+  let replacement;
+
+  if (Array.isArray(value)) {
+    replacement = value.map((item) => `- ${item}`).join("\n");
+  } else {
+    replacement = value;
+  }
+
+  prompt = prompt.replaceAll(`{${key}}`, replacement);
 }
 
 // ----------------------------
 // Build Evaluation Report
 // ----------------------------
+
 let report = `# Prompt Evaluation
 
 ## Prompt File
@@ -44,19 +56,35 @@ ${config.promptFile}
 
 ---
 
-## Test Variables
+## Test Configuration
 
 `;
 
 for (const [key, value] of Object.entries(config.variables)) {
-  report += `- **${key}:** ${value}\n`;
+
+  report += `### ${key}\n\n`;
+
+  if (Array.isArray(value)) {
+
+    value.forEach(item => {
+      report += `- ${item}\n`;
+    });
+
+  } else {
+
+    report += `${value}\n`;
+
+  }
+
+  report += `\n`;
 }
 
-report += `\n---\n`;
+report += `---\n`;
 
 // ----------------------------
 // Run Tests
 // ----------------------------
+
 async function run() {
 
   console.clear();
@@ -65,9 +93,12 @@ async function run() {
   console.log("Running Prompt Evaluation");
   console.log("==================================");
 
+  console.log(`Model: ${config.model}`);
+  console.log("");
+
   for (const temperature of config.temperatures) {
 
-    console.log(`\nTesting Temperature ${temperature}...`);
+    console.log(`Testing Temperature ${temperature}...`);
 
     try {
 
@@ -83,11 +114,12 @@ async function run() {
 
       report += `
 
-# Temperature ${temperature}
+# 🌡️ Temperature ${temperature}
 
-\`\`\`
+> [!IMPORTANT]
+> **Raw LLM Output (Unmodified)**
+
 ${response.text}
-\`\`\`
 
 ---
 
@@ -99,11 +131,13 @@ ${response.text}
 
       report += `
 
-# Temperature ${temperature}
+# 🌡️ Temperature ${temperature}
 
-ERROR:
+ERROR
 
+\`\`\`
 ${err}
+\`\`\`
 
 ---
 
@@ -115,27 +149,34 @@ ${err}
 
   report += `
 
-# Comparison
+# 📈 Output Observation
 
-> Fill this section manually.
+> [!NOTE]
 
----
-
-# Hallucinations
-
-> Fill this section manually.
-
----
-
-# Improvements
-
-> Fill this section manually.
+| Temperature | Observation |
+|-------------|-------------|
+| **0.0** | |
+| **0.5** | |
+| **1.0** | |
 
 ---
 
-# Final Verdict
+# ⚠️ Hallucination Analysis
 
-> Fill this section manually.
+> [!NOTE]
+
+| Category | Observation |
+|----------|-------------|
+| **Major Hallucinations** | |
+| **Minor Issues** | |
+
+---
+
+# 🏁 Final Verdict
+
+> [!TIP]
+
+Fill this section manually.
 
 `;
 
@@ -147,7 +188,8 @@ ${err}
 
   fs.writeFileSync(outputPath, report);
 
-  console.log("\n==================================");
+  console.log("");
+  console.log("==================================");
   console.log("Evaluation saved successfully.");
   console.log(outputPath);
   console.log("==================================");
