@@ -1,14 +1,326 @@
 {
-  "model": "gemini-2.5-flash",
+  "_documentation": {
+    "description": "Reusable test-case library for evaluating all prompt templates.",
+    "model": "gemini-3.5-flash",
+    "temperatures": [0.0, 0.5, 1.0],
+    "usage": "Each test case is mapped to one prompt file and one evaluation output file. Change activeTestCase to select which prompt evaluation to run."
+  },
 
-  "temperatures": [0.0, 0.5, 1.0],
+  "activeTestCase": "report_generation_05", 
 
-  "promptFile": "../prompts/product_comparison/01_head_to_head.md",
+  "testCases": {
 
-  "evaluationFile": "../evaluation/product_comparison/01_head_to_head.md",
+    "product_comparison_01": {
+      "name": "Head-to-Head Product Comparison",
+      "description": "Tests direct comparison between two or more products across specifications, strengths, weaknesses, performance, and value.",
+      "promptFile": "../prompts/product_comparison/01_head_to_head.md",
+      "evaluationFile": "../evaluation/product_comparison/01_head_to_head.md",
+      "variables": {
+        "Products": [
+          "iPhone 15 Pro",
+          "Samsung Galaxy S24"
+        ]
+      }
+    },
 
-  "variables": {
-    "Product A": "iPhone 15 Pro",
-    "Product B": "Samsung Galaxy S24"
+    "product_comparison_02": {
+      "name": "Best Product by Requirements",
+      "description": "Tests the model's ability to recommend the best product based on explicit user requirements and constraints.",
+      "promptFile": "../prompts/product_comparison/02_best_product_by_requirements.md",
+      "evaluationFile": "../evaluation/product_comparison/02_best_product_by_requirements.md",
+      "variables": {
+        "Products": [
+          "iPhone 15 Pro",
+          "Samsung Galaxy S24",
+          "Google Pixel 8 Pro"
+        ],
+        "User Requirements": [
+          "Excellent battery life",
+          "High gaming performance",
+          "Long software support",
+          "Budget under ₹90,000",
+          "Great cameras for photos and videos"
+        ]
+      }
+    },
+
+    "product_comparison_03": {
+      "name": "Feature-Focused Product Comparison",
+      "description": "Tests comparison of multiple products based primarily on one specific feature.",
+      "promptFile": "../prompts/product_comparison/03_feature_focused_comparison.md",
+      "evaluationFile": "../evaluation/product_comparison/03_feature_focused_comparison.md",
+      "variables": {
+        "Products": [
+          "iPhone 15 Pro",
+          "Samsung Galaxy S24",
+          "Google Pixel 8 Pro"
+        ],
+        "Feature": "Camera"
+      }
+    },
+
+    "product_comparison_04": {
+      "name": "Pros and Cons Comparison",
+      "description": "Tests balanced identification of advantages and disadvantages across multiple competing products.",
+      "promptFile": "../prompts/product_comparison/04_pros_and_cons_comparison.md",
+      "evaluationFile": "../evaluation/product_comparison/04_pros_and_cons_comparison.md",
+      "variables": {
+        "Products": [
+          "iPhone 15 Pro",
+          "Samsung Galaxy S24",
+          "Google Pixel 8 Pro"
+        ]
+      }
+    },
+
+    "product_comparison_05": {
+      "name": "Upgrade Worthiness Analyzer",
+      "description": "Tests whether upgrading from an existing product to a newer product is justified by meaningful improvements.",
+      "promptFile": "../prompts/product_comparison/05_upgrade_worthiness_analyzer.md",
+      "evaluationFile": "../evaluation/product_comparison/05_upgrade_worthiness_analyzer.md",
+      "variables": {
+        "Current Product": "iPhone 13 Pro",
+        "New Product": "iPhone 15 Pro"
+      }
+    },
+
+    "seo_optimization_01": {
+      "name": "SEO Content Optimizer",
+      "description": "Tests optimization of existing content for search visibility while preserving readability and original meaning.",
+      "promptFile": "../prompts/SEO_optimization/01_seo_content_optimizer.md",
+      "evaluationFile": "../evaluation/SEO_optimization/01_seo_content_optimizer.md",
+      "variables": {
+        "Content": "Machine learning is transforming the technology industry by enabling computers to learn from data and make intelligent decisions. It is being used in healthcare, finance, transportation, and many other industries.",
+        "Primary Keyword": "machine learning",
+        "Secondary Keywords": [
+          "artificial intelligence",
+          "machine learning applications",
+          "AI technology"
+        ]
+      }
+    },
+
+    "seo_optimization_02": {
+      "name": "SEO Meta Title and Description Generator",
+      "description": "Tests generation of search-optimized metadata that accurately represents supplied content.",
+      "promptFile": "../prompts/SEO_optimization/02_meta_title_description_generator.md",
+      "evaluationFile": "../evaluation/SEO_optimization/02_meta_title_description_generator.md",
+      "variables": {
+        "Topic": "Machine Learning Roadmap for Beginners",
+        "Primary Keyword": "machine learning roadmap"
+      }
+    },
+
+    "seo_optimization_03": {
+      "name": "Keyword Integration Optimizer",
+      "description": "Tests natural integration of primary and secondary SEO keywords without excessive keyword stuffing.",
+      "promptFile": "../prompts/SEO_optimization/03_keyword_integration_optimizer.md",
+      "evaluationFile": "../evaluation/SEO_optimization/03_keyword_integration_optimizer.md",
+      "variables": {
+        "Article": "Machine learning is one of the fastest-growing fields in technology. Beginners should first learn Python, understand basic algorithms, and build practical projects to strengthen their understanding.",
+        "Primary Keyword": "machine learning roadmap",
+        "Secondary Keywords": [
+          "machine learning for beginners",
+          "python for machine learning",
+          "machine learning projects",
+          "AI learning path"
+        ]
+      }
+    },
+
+    "seo_optimization_04": {
+      "name": "Content Structure Optimizer",
+      "description": "Tests restructuring of content using SEO-friendly headings, hierarchy, readability, and logical organization.",
+      "promptFile": "../prompts/SEO_optimization/04_content_structure_optimizer.md",
+      "evaluationFile": "../evaluation/SEO_optimization/04_content_structure_optimizer.md",
+      "variables": {
+        "Content": "Machine learning requires knowledge of Python, mathematics, data preprocessing, algorithms, model evaluation, and practical projects. Beginners often struggle because they try to learn everything at once without following a structured path."
+      }
+    },
+
+    "seo_optimization_05": {
+      "name": "Search Intent Content Analyzer",
+      "description": "Tests identification of search intent and evaluates whether supplied content satisfies user expectations.",
+      "promptFile": "../prompts/SEO_optimization/05_search_intent_content_analyzer.md",
+      "evaluationFile": "../evaluation/SEO_optimization/05_search_intent_content_analyzer.md",
+      "variables": {
+        "Search Query": "best machine learning roadmap for beginners",
+        "Content": "Machine learning involves learning Python, mathematics, algorithms, data preprocessing, model training, evaluation, and practical projects."
+      }
+    },
+
+    "customer_support_01": {
+      "name": "Customer Complaint Response",
+      "description": "Tests generation of empathetic, professional, and actionable responses to customer complaints.",
+      "promptFile": "../prompts/customer_support/01_customer_complaint_response.md",
+      "evaluationFile": "../evaluation/customer_support/01_customer_complaint_response.md",
+      "variables": {
+        "Customer Complaint": "I received my order three days late, the package was damaged, and I haven't received any response from customer support despite contacting them twice. This has been a very frustrating experience."
+      }
+    },
+
+    "customer_support_02": {
+      "name": "Product Troubleshooting Assistant",
+      "description": "Tests systematic diagnosis of a reported product issue using safe and structured troubleshooting steps.",
+      "promptFile": "../prompts/customer_support/02_product_troubleshooting_assistant.md",
+      "evaluationFile": "../evaluation/customer_support/02_product_troubleshooting_assistant.md",
+      "variables": {
+        "Product": "Smart LED TV",
+        "Issue": "The television powers on and sound works normally, but the screen remains completely black."
+      }
+    },
+
+    "customer_support_03": {
+      "name": "Refund and Return Decision Assistant",
+      "description": "Tests policy-based refund or return eligibility decisions without inventing unsupported company rules.",
+      "promptFile": "../prompts/customer_support/03_refund_return_decision_assistant.md",
+      "evaluationFile": "../evaluation/customer_support/03_refund_return_decision_assistant.md",
+      "variables": {
+        "Company Policy": "Products can be returned within 30 days of delivery if they are unused and in their original packaging. Incorrect or damaged items are eligible for a full refund or replacement regardless of packaging condition. Proof of purchase is required.",
+        "Customer Request": "I received the wrong product five days ago. I opened the package immediately and no longer have the original packaging, but I have the invoice and would like a refund."
+      }
+    },
+
+    "customer_support_04": {
+      "name": "Support Ticket Classification",
+      "description": "Tests classification, prioritization, and routing of customer-support requests.",
+      "promptFile": "../prompts/customer_support/04_support_ticket_classifier.md",
+      "evaluationFile": "../evaluation/customer_support/04_support_ticket_classifier.md",
+      "variables": {
+        "Customer Message": "I was charged twice for the same order. Please help me get the duplicate charge refunded."
+      }
+    },
+
+    "customer_support_05": {
+      "name": "Customer Escalation Assistant",
+      "description": "Tests identification of cases requiring escalation and generation of appropriate escalation guidance.",
+      "promptFile": "../prompts/customer_support/05_customer_escalation_assistant.md",
+      "evaluationFile": "../evaluation/customer_support/05_customer_escalation_assistant.md",
+      "variables": {
+        "Customer Issue": "My account has been locked for three days. I contacted support twice but still cannot access my account, and I have an urgent order that needs to be managed."
+      }
+    },
+
+    "report_generation_01": {
+      "name": "Executive Summary Generator",
+      "description": "Tests concise extraction of key findings, risks, and recommendations while preserving the certainty and meaning of source material.",
+      "promptFile": "../prompts/report_generation/01_executive_summary_generator.md",
+      "evaluationFile": "../evaluation/report_generation/01_executive_summary_generator.md",
+      "variables": {
+        "Report Content": "ABC Corporation completed its second-quarter financial review. Revenue increased by 12% compared to the previous quarter, driven primarily by strong online sales. Operating expenses increased by 5% due to infrastructure investments. Customer satisfaction improved from 84% to 91%. The report identifies supply chain delays as a potential risk for the next quarter and recommends diversifying suppliers while continuing investments in digital infrastructure."
+      }
+    },
+
+    "report_generation_02": {
+      "name": "Incident Report Generator",
+      "description": "Tests factual incident documentation including timeline, impact, resolution, preventive measures, and handling of missing technical information.",
+      "promptFile": "../prompts/report_generation/02_incident_report_genrator.md",
+      "evaluationFile": "../evaluation/report_generation/02_incident_report_genrator.md",
+      "variables": {
+        "Incident Details": "At 10:35 AM, users reported that they were unable to log into the company's web application. Investigation revealed that the authentication database had become unavailable due to a failed database connection. The issue affected all user logins but did not impact existing active sessions. The database connection was restored at 11:02 AM, and normal service resumed. The incident highlighted the need for improved database health monitoring and automated failover mechanisms."
+      }
+    },
+
+    "report_generation_03": {
+      "name": "Project Status Report Generator",
+      "description": "Tests reporting of completed, ongoing, and pending project tasks together with risks and upcoming milestones without inventing implementation details.",
+      "promptFile": "../prompts/report_generation/03_project_status_report_generator.md",
+      "evaluationFile": "../evaluation/report_generation/03_project_status_report_generator.md",
+      "variables": {
+        "Project": "Online Learning Platform",
+        "Completed Tasks": [
+          "User authentication module",
+          "Course catalog",
+          "Responsive homepage"
+        ],
+        "Ongoing Tasks": [
+          "Payment gateway integration",
+          "Instructor dashboard"
+        ],
+        "Pending Tasks": [
+          "Certificate generation",
+          "Mobile application development"
+        ],
+        "Risk": "Delay in third-party payment gateway approval",
+        "Next Milestone": "Complete payment integration by the end of the month"
+      }
+    },
+
+    "report_generation_04": {
+      "name": "Data Analysis Report Generator",
+      "description": "Tests numerical analysis, trend identification, statistical restraint, and evidence-based recommendations from structured data.",
+      "promptFile": "../prompts/report_generation/04_data_analysis_report_generator.md",
+      "evaluationFile": "../evaluation/report_generation/04_data_analysis_report_generator.md",
+      "variables": {
+        "Dataset": "Quarterly Sales Data:\nQ1: $120,000\nQ2: $145,000\nQ3: $138,000\nQ4: $162,000\nCustomer Satisfaction:\nQ1: 84%\nQ2: 87%\nQ3: 85%\nQ4: 91%"
+      }
+    },
+
+    "report_generation_05": {
+      "name": "Meeting Minutes Generator",
+      "description": "Tests extraction and classification of discussion points, decisions, action items, deadlines, follow-ups, and scheduled events from meeting content.",
+      "promptFile": "../prompts/report_generation/05_meeting_minutes_generator.md",
+      "evaluationFile": "../evaluation/report_generation/05_meeting_minutes_generator.md",
+      "variables": {
+        "Meeting Content": "The development team met to review the progress of the Online Learning Platform project. The authentication and course catalog modules were confirmed as complete. The payment gateway integration is delayed because approval from the payment provider is still pending. Sarah will follow up with the provider by Friday. The team agreed to begin planning the mobile application next week. The next project review meeting will be held on Monday."
+      }
+    },
+
+    "buying_guides_01": {
+      "name": "Product Buying Guide Generator",
+      "description": "Tests generation of a comprehensive buying guide based on product category, budget, and intended use.",
+      "promptFile": "../prompts/buying_guides/01_product_buying_guide_generator.md",
+      "evaluationFile": "../evaluation/buying_guides/01_product_buying_guide_generator.md",
+      "variables": {
+        "Product Category": "Gaming Laptop",
+        "Budget": "₹80,000",
+        "Intended Use": "1080p gaming, programming, and college work"
+      }
+    },
+
+    "buying_guides_02": {
+      "name": "Pre-Purchase Checklist Generator",
+      "description": "Tests generation of a practical checklist covering compatibility, essential checks, risks, accessories, and total purchase considerations.",
+      "promptFile": "../prompts/buying_guides/02_pre_purchase_checklist_generator.md",
+      "evaluationFile": "../evaluation/buying_guides/02_pre_purchase_checklist_generator.md",
+      "variables": {
+        "Product Category": "Mirrorless Camera",
+        "Intended Use": "Travel photography and beginner content creation"
+      }
+    },
+
+    "buying_guides_03": {
+      "name": "Product Specification Explainer",
+      "description": "Tests translation of technical product specifications into beginner-friendly explanations tied to intended use.",
+      "promptFile": "../prompts/buying_guides/03_product_specification_explainer.md",
+      "evaluationFile": "../evaluation/buying_guides/03_product_specification_explainer.md",
+      "variables": {
+        "Product Category": "Laptop",
+        "Specifications": "Intel Core i7-13620H, NVIDIA RTX 4060 8GB, 16GB DDR5 RAM, 1TB NVMe SSD, 15.6-inch Full HD 144Hz IPS Display, Wi-Fi 6E, 80Wh Battery",
+        "Intended Use": "Programming, machine learning, and 1080p gaming"
+      }
+    },
+
+    "buying_guides_04": {
+      "name": "Common Buying Mistake Advisor",
+      "description": "Tests identification of common purchasing mistakes, misleading marketing claims, and practical ways to avoid poor buying decisions.",
+      "promptFile": "../prompts/buying_guides/04_common_buying_mistake_advisor.md",
+      "evaluationFile": "../evaluation/buying_guides/04_common_buying_mistake_advisor.md",
+      "variables": {
+        "Product Category": "Smartphone",
+        "Intended Use": "Daily use, photography, and gaming"
+      }
+    },
+
+    "buying_guides_05": {
+      "name": "First-Time Buyer Guide",
+      "description": "Tests beginner-friendly explanation of terminology, purchasing factors, common mistakes, maintenance, and recommendations for first-time buyers.",
+      "promptFile": "../prompts/buying_guides/05_first_time_buyer_guide.md",
+      "evaluationFile": "../evaluation/buying_guides/05_first_time_buyer_guide.md",
+      "variables": {
+        "Product Category": "Mechanical Keyboard",
+        "Intended Use": "Gaming, programming, and everyday typing"
+      }
+    }
   }
 }

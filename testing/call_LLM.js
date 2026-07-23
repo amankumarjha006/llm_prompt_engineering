@@ -6,53 +6,234 @@ import { fileURLToPath } from "url";
 
 dotenv.config();
 
+// ============================================================
+// Gemini Client
+// ============================================================
+
+if (!process.env.GEMINI_API_KEY) {
+  throw new Error(
+    "GEMINI_API_KEY is missing. Add it to your .env file."
+  );
+}
+
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
 });
 
+// ============================================================
+// Directory Setup
+// ============================================================
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ----------------------------
-// Load Configuration
-// ----------------------------
+// ============================================================
+// Load Test Configuration
+// ============================================================
+
+const configPath = path.join(__dirname, "test_cases.json");
+
+if (!fs.existsSync(configPath)) {
+  throw new Error(
+    `Configuration file not found:\n${configPath}`
+  );
+}
+
 const config = JSON.parse(
-  fs.readFileSync(path.join(__dirname, "test_cases.json"), "utf8")
+  fs.readFileSync(configPath, "utf8")
 );
 
-// ----------------------------
+// ============================================================
+// Validate Global Configuration
+// ============================================================
+
+if (!config._documentation) {
+  throw new Error(
+    'Missing "_documentation" section in test_cases.json'
+  );
+}
+
+if (!config.activeTestCase) {
+  throw new Error(
+    'Missing "activeTestCase" in test_cases.json'
+  );
+}
+
+if (!config.testCases) {
+  throw new Error(
+    'Missing "testCases" section in test_cases.json'
+  );
+}
+
+// ============================================================
+// Select Active Test Case
+// ============================================================
+
+const testCaseId = config.activeTestCase;
+const testCase = config.testCases[testCaseId];
+
+if (!testCase) {
+  throw new Error(
+    `Test case "${testCaseId}" was not found in test_cases.json`
+  );
+}
+
+// ============================================================
+// Extract Configuration
+// ============================================================
+
+const model = config._documentation.model;
+const temperatures = config._documentation.temperatures;
+
+const testName = testCase.name;
+const testDescription = testCase.description;
+
+const promptFile = testCase.promptFile;
+const evaluationFile = testCase.evaluationFile;
+
+const variables = testCase.variables || {};
+
+// ============================================================
+// Validate Test Case
+// ============================================================
+
+if (!model) {
+  throw new Error(
+    'Missing "model" in _documentation'
+  );
+}
+
+if (
+  !Array.isArray(temperatures) ||
+  temperatures.length === 0
+) {
+  throw new Error(
+    '"temperatures" must be a non-empty array'
+  );
+}
+
+if (!promptFile) {
+  throw new Error(
+    `Missing "promptFile" in test case "${testCaseId}"`
+  );
+}
+
+if (!evaluationFile) {
+  throw new Error(
+    `Missing "evaluationFile" in test case "${testCaseId}"`
+  );
+}
+
+// ============================================================
 // Load Prompt
-// ----------------------------
+// ============================================================
+
+const promptPath = path.resolve(
+  __dirname,
+  promptFile
+);
+
+if (!fs.existsSync(promptPath)) {
+  throw new Error(
+    `Prompt file not found:\n${promptPath}`
+  );
+}
+
 let prompt = fs.readFileSync(
-  path.join(__dirname, config.promptFile),
+  promptPath,
   "utf8"
 );
 
-// ----------------------------
-// Replace Variables
-// ----------------------------
+// ============================================================
+// Replace Prompt Variables
+// ============================================================
 
-for (const [key, value] of Object.entries(config.variables)) {
+for (const [key, value] of Object.entries(variables)) {
+
   let replacement;
 
   if (Array.isArray(value)) {
-    replacement = value.map((item) => `- ${item}`).join("\n");
+
+    replacement = value
+      .map((item) => `- ${item}`)
+      .join("\n");
+
+  } else if (
+    typeof value === "object" &&
+    value !== null
+  ) {
+
+    replacement = JSON.stringify(
+      value,
+      null,
+      2
+    );
+
   } else {
-    replacement = value;
+
+    replacement = String(value);
+
   }
 
-  prompt = prompt.replaceAll(`{${key}}`, replacement);
+  prompt = prompt.replaceAll(
+    `{${key}}`,
+    replacement
+  );
 }
 
-// ----------------------------
+// ============================================================
+// Check for Unresolved Variables
+// ============================================================
+
+const unresolvedVariables =
+  prompt.match(/\{[^{}]+\}/g);
+
+if (unresolvedVariables) {
+
+  const uniqueVariables = [
+    ...new Set(unresolvedVariables),
+  ];
+
+  console.warn("");
+  console.warn(
+    "⚠ Warning: Unresolved prompt variables detected:"
+  );
+
+  uniqueVariables.forEach((variable) => {
+    console.warn(`  ${variable}`);
+  });
+
+  console.warn("");
+}
+
+// ============================================================
 // Build Evaluation Report
-// ----------------------------
+// ============================================================
 
 let report = `# Prompt Evaluation
 
+## Test Case
+
+**ID:** ${testCaseId}
+
+**Name:** ${testName}
+
+**Description:** ${testDescription}
+
+---
+
 ## Prompt File
 
-${config.promptFile}
+${promptFile}
+
+---
+
+## Model Configuration
+
+| Parameter | Value |
+|-----------|-------|
+| **Model** | ${model} |
+| **Temperatures** | ${temperatures.join(", ")} |
 
 ---
 
@@ -60,15 +241,28 @@ ${config.promptFile}
 
 `;
 
-for (const [key, value] of Object.entries(config.variables)) {
+// ============================================================
+// Add Variables to Evaluation Report
+// ============================================================
+
+for (const [key, value] of Object.entries(variables)) {
 
   report += `### ${key}\n\n`;
 
   if (Array.isArray(value)) {
 
-    value.forEach(item => {
+    value.forEach((item) => {
       report += `- ${item}\n`;
     });
+
+  } else if (
+    typeof value === "object" &&
+    value !== null
+  ) {
+
+    report += `\`\`\`json\n`;
+    report += `${JSON.stringify(value, null, 2)}\n`;
+    report += `\`\`\`\n`;
 
   } else {
 
@@ -81,36 +275,78 @@ for (const [key, value] of Object.entries(config.variables)) {
 
 report += `---\n`;
 
-// ----------------------------
-// Run Tests
-// ----------------------------
+// ============================================================
+// Run Prompt Evaluation
+// ============================================================
 
 async function run() {
 
   console.clear();
 
-  console.log("==================================");
-  console.log("Running Prompt Evaluation");
-  console.log("==================================");
+  console.log(
+    "=========================================="
+  );
 
-  console.log(`Model: ${config.model}`);
+  console.log(
+    "        Running Prompt Evaluation"
+  );
+
+  console.log(
+    "=========================================="
+  );
+
   console.log("");
 
-  for (const temperature of config.temperatures) {
+  console.log(
+    `Test Case : ${testCaseId}`
+  );
 
-    console.log(`Testing Temperature ${temperature}...`);
+  console.log(
+    `Prompt    : ${testName}`
+  );
+
+  console.log(
+    `Model     : ${model}`
+  );
+
+  console.log(
+    `Temps     : ${temperatures.join(", ")}`
+  );
+
+  console.log("");
+
+  // ==========================================================
+  // Run Each Temperature
+  // ==========================================================
+
+  for (const temperature of temperatures) {
+
+    console.log(
+      `Testing Temperature ${temperature}...`
+    );
 
     try {
 
-      const response = await ai.models.generateContent({
-        model: config.model,
-        contents: prompt,
-        config: {
-          temperature,
-        },
-      });
+      const response =
+        await ai.models.generateContent({
 
-      console.log("✓ Complete");
+          model,
+
+          contents: prompt,
+
+          config: {
+            temperature,
+          },
+
+        });
+
+      const output =
+        response.text ||
+        "No text response returned.";
+
+      console.log(
+        `✓ Temperature ${temperature} Complete`
+      );
 
       report += `
 
@@ -119,7 +355,7 @@ async function run() {
 > [!IMPORTANT]
 > **Raw LLM Output (Unmodified)**
 
-${response.text}
+${output}
 
 ---
 
@@ -127,16 +363,26 @@ ${response.text}
 
     } catch (err) {
 
+      console.error(
+        `✗ Temperature ${temperature} Failed`
+      );
+
       console.error(err);
+
+      const errorMessage =
+        err instanceof Error
+          ? err.stack || err.message
+          : String(err);
 
       report += `
 
 # 🌡️ Temperature ${temperature}
 
-ERROR
+> [!CAUTION]
+> **Generation Failed**
 
-\`\`\`
-${err}
+\`\`\`text
+${errorMessage}
 \`\`\`
 
 ---
@@ -144,8 +390,11 @@ ${err}
 `;
 
     }
-
   }
+
+  // ==========================================================
+  // Manual Evaluation Sections
+  // ==========================================================
 
   report += `
 
@@ -155,9 +404,12 @@ ${err}
 
 | Temperature | Observation |
 |-------------|-------------|
-| **0.0** | |
-| **0.5** | |
-| **1.0** | |
+${temperatures
+  .map(
+    (temperature) =>
+      `| **${temperature}** | |`
+  )
+  .join("\n")}
 
 ---
 
@@ -180,19 +432,73 @@ Fill this section manually.
 
 `;
 
-  const outputPath = path.join(__dirname, config.evaluationFile);
+  // ==========================================================
+  // Save Evaluation Report
+  // ==========================================================
 
-  fs.mkdirSync(path.dirname(outputPath), {
-    recursive: true,
-  });
+  const outputPath = path.resolve(
+    __dirname,
+    evaluationFile
+  );
 
-  fs.writeFileSync(outputPath, report);
+  fs.mkdirSync(
+    path.dirname(outputPath),
+    {
+      recursive: true,
+    }
+  );
+
+  fs.writeFileSync(
+    outputPath,
+    report,
+    "utf8"
+  );
+
+  // ==========================================================
+  // Completion Message
+  // ==========================================================
 
   console.log("");
-  console.log("==================================");
-  console.log("Evaluation saved successfully.");
-  console.log(outputPath);
-  console.log("==================================");
+
+  console.log(
+    "=========================================="
+  );
+
+  console.log(
+    "Evaluation saved successfully."
+  );
+
+  console.log(
+    "=========================================="
+  );
+
+  console.log("");
+
+  console.log(
+    `Test Case : ${testCaseId}`
+  );
+
+  console.log(
+    `Output    : ${outputPath}`
+  );
+
+  console.log("");
 }
 
-run();
+// ============================================================
+// Start Evaluation
+// ============================================================
+
+run().catch((err) => {
+
+  console.error("");
+
+  console.error(
+    "Fatal evaluation error:"
+  );
+
+  console.error(err);
+
+  process.exit(1);
+
+});
